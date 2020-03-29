@@ -43,7 +43,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public static Amulet amulet;
 	public static Random rand;
 	public UI ui;
-	public static String gameState = "NORMAL";
+	public static String gameState = "MENU";
 	public static World world;
 	public Ammo ammo;
 	private int cur_Level = 1, maxLevel = 3;
@@ -54,7 +54,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public static Spritesheet spritesheet;
 	private boolean showMessageGameOver = true, restartGame = false;
 	private int framesGameOver = 0;
-	
+	public Menu menu;
 	public static void main(String[] args) {
 		
 		Game game = new Game();
@@ -118,6 +118,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 				cur_Level = 1;
 				Game.inicialization();
 			}
+		}else if(gameState == "MENU") {
+			menu.tick();
 		}
 	}
 	
@@ -161,6 +163,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			if(showMessageGameOver)
 				g.drawString("> Pressione o espaço para reiniciar! <",  (WIDTH*SCALE)/2 -260, HEIGHT*SCALE/2+30);
 
+		}else  if(gameState == "MENU") {
+			menu.render(g);
 		}
 		bs.show();
 	}
@@ -172,10 +176,10 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		addMouseListener(this);
 		frameStart();
 		ui = new UI();
-		
+	
 		//Inicializando
 		inicialization();
-		
+		menu = new Menu();
 		
 		
 	}
@@ -221,7 +225,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	
 	public void frameStart() {
 		this.setPreferredSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
-		frame = new JFrame("Demons and Dragons");
+		frame = new JFrame("Demons and Pistols");
 		frame.add(this);
 		frame.setResizable(false);
 		frame.pack();
@@ -232,32 +236,47 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 	
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_D) {
-			player.right = true;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_A) {
-			player.left = true;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_W) {
-			player.up = true;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_S) {
-			player.down = true;
-		}
-		if(e.getKeyCode()== KeyEvent.VK_ENTER && gameState == "GAME_OVER") {
-			restartGame = true;
-		}
-		if(Game.player.pickGun) {
-			if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-				Game.player.shooting(3);
-			}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-				Game.player.shooting(2);
-			}else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-				Game.player.shooting(1);
+		switch(gameState) {
+		case "Normal":
+			if(e.getKeyCode() == KeyEvent.VK_D) {
+				player.right = true;
+			}
+			if(e.getKeyCode() == KeyEvent.VK_A) {
+				player.left = true;
+			}
+			if(e.getKeyCode() == KeyEvent.VK_W) {
+				player.up = true;
+			}
+			if(e.getKeyCode() == KeyEvent.VK_S) {
+				player.down = true;
+			}
+			if(Game.player.pickGun) {
+				if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+					Game.player.shooting(3);
+				}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+					Game.player.shooting(2);
+				}else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+					Game.player.shooting(1);
+				}else if(e.getKeyCode() == KeyEvent.VK_UP) {
+					Game.player.shooting(4);
+				}
+			}
+			return;
+		case "GAME_OVER":
+			if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+				restartGame = true;
+			}
+			return;
+		case "MENU":
+			if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+				menu.setDown(true);
 			}else if(e.getKeyCode() == KeyEvent.VK_UP) {
-				Game.player.shooting(4);
+				menu.setUp(true);
 			}
 		}
+		
+		
+		
 		
 	}
 	

@@ -18,7 +18,7 @@ public class Ammo extends Entity{
 	
 	public void tick() {
 		this.frame++;
-		
+	
 		if(this.frame == this.maxFrames) {
 			this.frame = 0;
 			this.index++;

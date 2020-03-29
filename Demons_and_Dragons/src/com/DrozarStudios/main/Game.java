@@ -3,7 +3,9 @@ package com.DrozarStudios.main;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -41,6 +43,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public static Amulet amulet;
 	public static Random rand;
 	public UI ui;
+	public static String gameState = "NORMAL";
 	public static World world;
 	public Ammo ammo;
 	private int cur_Level = 1, maxLevel = 3;
@@ -49,6 +52,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public static List<Enemy> enemies;
 	public static List<WallTile> walls;
 	public static Spritesheet spritesheet;
+	private boolean showMessageGameOver = true, restartGame = false;
+	private int framesGameOver = 0;
 	
 	public static void main(String[] args) {
 		
@@ -83,22 +88,36 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 	
 	public void tick() {
-		
-		for(int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
-			e.tick();
-		}
-		for(int i = 0; i < bullets.size(); i++) {
-			Entity e = bullets.get(i);
-			e.tick();
-		}
-		
-		if(Game.enemies.size() == 0) {
-			cur_Level++;
-			if(cur_Level > maxLevel) {
-				cur_Level = 1;
+		if(gameState == "NORMAL") {
+			for(int i = 0; i < entities.size(); i++) {
+				Entity e = entities.get(i);
+				e.tick();
 			}
-			Game.inicialization(cur_Level);
+			for(int i = 0; i < bullets.size(); i++) {
+				Entity e = bullets.get(i);
+				e.tick();
+			}
+			
+			if(Game.enemies.size() == 0) {
+				cur_Level++;
+				if(cur_Level > maxLevel) {
+					cur_Level = 1;
+				}
+				Game.inicialization(cur_Level);
+			}
+		}else if(gameState == "GAME_OVER") {
+			framesGameOver++;
+			if(framesGameOver == 15) {
+				framesGameOver = 0;
+				showMessageGameOver = !showMessageGameOver;
+			}
+			
+			if(restartGame) {
+				gameState = "NORMAL";
+				restartGame = false;
+				cur_Level = 1;
+				Game.inicialization();
+			}
 		}
 	}
 	
@@ -119,17 +138,30 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			Entity e = entities.get(i);
 			e.render(g);
 		}
-		for(int i = 0; i < bullets.size(); i++) {
-			Entity e = bullets.get(i);
-			e.render(g);
+		if(gameState != "GAME_OVER") {
+			for(int i = 0; i < bullets.size(); i++) {
+				Entity e = bullets.get(i);
+				e.render(g);
+			}
 		}
-		
 		ui.render(g);
 		
 		g.dispose();
 		g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, WIDTH*SCALE, HEIGHT*SCALE,null);
 		UI.writeUI(g);
+		if (gameState == "GAME_OVER") {
+			Graphics2D g2 = (Graphics2D) g;
+			g2.setColor(new Color(0,0,0,150));
+			g2.fillRect(0, 0, WIDTH*SCALE, HEIGHT*SCALE);
+			g.setColor(Color.white);
+			g.setFont(new Font("arial", Font.BOLD,40*SCALE/3));
+			g.drawString("GAME OVER", (WIDTH*SCALE)/2 -100, HEIGHT*SCALE/2-30);
+			g.setFont(new Font("arial", Font.BOLD,30*SCALE/3));
+			if(showMessageGameOver)
+				g.drawString("> Pressione o espaço para reiniciar! <",  (WIDTH*SCALE)/2 -260, HEIGHT*SCALE/2+30);
+
+		}
 		bs.show();
 	}
 	
@@ -212,6 +244,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		if(e.getKeyCode() == KeyEvent.VK_S) {
 			player.down = true;
 		}
+		if(e.getKeyCode()== KeyEvent.VK_ENTER && gameState == "GAME_OVER") {
+			restartGame = true;
+		}
 		if(Game.player.pickGun) {
 			if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 				Game.player.shooting(3);
@@ -223,6 +258,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 				Game.player.shooting(4);
 			}
 		}
+		
 	}
 	
 	public void keyReleased(KeyEvent e) {

@@ -145,7 +145,8 @@ public class Player extends Entity{
 			//System.out.println(Game.player.life);	
 			isDamaged = true;
 			if(Game.player.life<=0) {
-				Game.inicialization();
+				Game.gameState = "GAME_OVER";
+				Game.player.life=0;
 			}
 		}
 	}

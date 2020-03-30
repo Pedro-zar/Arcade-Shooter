@@ -3,12 +3,13 @@ package com.DrozarStudios.main;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class Menu {
 	
-	private String[] options = {"NOVO JOGO", "CARREGAR JOGO", "SAIR"};
+	private String[] options = { "CONTINUAR JOGO","NOVO JOGO", "SAIR"};
 	private int currentOption = 0, maxOption = options.length-1;
-	private boolean down = false, up = false;
+	private boolean down = false, up = false, enter = false, gameStarted = false;
 
 	private boolean getDown() {
 		return this.down;
@@ -39,12 +40,34 @@ public class Menu {
 			if(currentOption > maxOption) {
 				currentOption = 0;
 			}
+		}else if(getEnter()) {	
+			if(options[currentOption] == "NOVO JOGO") {
+				Game.gameState = "NORMAL";
+				currentOption = 0;
+				if(gameStarted = true) {
+					Game.inicialization(1);
+				}
+				gameStarted = true;
+			}else if(options[currentOption] == "CONTINUAR JOGO" && gameStarted == true) {
+				Game.gameState = "NORMAL";
+			}else if(options[currentOption] == "SAIR") {
+				System.exit(1);
+			}
+			setEnter(false);
 		}
 	}
 	
+	private boolean getEnter() {
+		return this.enter;
+	}
+	public void setEnter(boolean enter) {
+		this.enter = enter;
+	}
+
 	public void render(Graphics g) {
 		//title
-		g.setColor(Color.black);
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(new Color(0,0,0,100));
 		g.fillRect(0, 0, Game.WIDTH*Game.SCALE, Game.HEIGHT*Game.SCALE);
 		g.setColor(Color.white);
 		g.setFont(new Font("arial", Font.BOLD,36));

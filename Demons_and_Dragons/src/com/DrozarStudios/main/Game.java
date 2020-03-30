@@ -232,12 +232,11 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
-		
 	}
 	
 	public void keyPressed(KeyEvent e) {
 		switch(gameState) {
-		case "Normal":
+		case "NORMAL":
 			if(e.getKeyCode() == KeyEvent.VK_D) {
 				player.right = true;
 			}
@@ -261,6 +260,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 					Game.player.shooting(4);
 				}
 			}
+			if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+				gameState = "MENU";
+			}
 			return;
 		case "GAME_OVER":
 			if(e.getKeyCode()== KeyEvent.VK_ENTER) {
@@ -272,6 +274,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 				menu.setDown(true);
 			}else if(e.getKeyCode() == KeyEvent.VK_UP) {
 				menu.setUp(true);
+			}else if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+				menu.setEnter(true);
 			}
 		}
 		
@@ -301,18 +305,22 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		double angle = Math.toDegrees(Math.atan2((int)(e.getY()/SCALE) - (Game.player.getY() +8- Camera.y), ((int)(e.getX()/SCALE) - (Game.player.getX() +8- Camera.x))));
-		if(e.getButton() == MouseEvent.BUTTON1 && player.pickGun) {
-			if(angle >= -135 && angle <= -45) {//cima
-				Game.player.shooting(4);
-			}else if(angle <= 135 && angle >= 45) {//baixo
-				Game.player.shooting(1);
-			}else if(angle > -45 && angle <45) {//direita
-				Game.player.shooting(3);
-			}else {//esquerda
-				Game.player.shooting(2);				
+		switch(gameState) {
+		case "NORMAL":
+			double angle = Math.toDegrees(Math.atan2((int)(e.getY()/SCALE) - (Game.player.getY() +8- Camera.y), ((int)(e.getX()/SCALE) - (Game.player.getX() +8- Camera.x))));
+			if(e.getButton() == MouseEvent.BUTTON1 && player.pickGun) {
+				if(angle >= -135 && angle <= -45) {//cima
+					Game.player.shooting(4);
+				}else if(angle <= 135 && angle >= 45) {//baixo
+					Game.player.shooting(1);
+				}else if(angle > -45 && angle <45) {//direita
+					Game.player.shooting(3);
+				}else {//esquerda
+					Game.player.shooting(2);				
+				}
 			}
 		}
+		
 	}
 
 	

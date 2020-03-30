@@ -170,7 +170,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 	
 	public Game() {
-		
+		Sound.musicBackground.loop();
 		rand = new Random();
 		addKeyListener(this);
 		addMouseListener(this);

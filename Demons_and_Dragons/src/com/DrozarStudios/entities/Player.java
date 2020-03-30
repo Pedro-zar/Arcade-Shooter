@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import com.DrozarStudios.main.Game;
+import com.DrozarStudios.main.Sound;
 import com.DrozarStudios.world.Camera;
 import com.DrozarStudios.world.World;
 
@@ -142,6 +143,7 @@ public class Player extends Entity{
 		if(!continueIsDamage) {
 			continueIsDamage = true;
 			Game.player.life-= damage;
+			Sound.hurtEffect.play();
 			//System.out.println(Game.player.life);	
 			isDamaged = true;
 			if(Game.player.life<=0) {
@@ -216,6 +218,7 @@ public class Player extends Entity{
 				py = 12;
 			}
 			ammo-=0.5;
+			Sound.shootEffect.play();
 			Bullet bullet = new Bullet(this.getX()+px,this.getY()+py, 3, 3, null, dx, dy);
 			Game.bullets.add(bullet);
 			Gun.gunFrames = 0;

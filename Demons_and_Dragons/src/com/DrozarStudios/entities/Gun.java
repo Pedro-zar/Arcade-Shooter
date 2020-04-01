@@ -24,7 +24,7 @@ public class Gun extends Entity {
 			if(this.index > this.maxIndex) {
 				this.index = 0;
 			}
-			Entity.GUN_EN = Game.spritesheet.getSprite((6+index)*16, 32, 16, 16);
+			Entity.GUN_EN = Game.spritesheet.getSprite((6+index)*Game.stdBits, 32, Game.stdBits, Game.stdBits);
 		}
 		
 		

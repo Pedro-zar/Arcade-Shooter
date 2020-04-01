@@ -22,14 +22,14 @@ public class Enemy extends Entity {
 	public Enemy(int x, int y, int width, int height, BufferedImage sprite) {
 		super(x, y, width, height, null);
 		sprites = new BufferedImage[8];
-		sprites[0] = Game.spritesheet.getSprite(6*16, 16*4, 16,16);
-		sprites[1] = Game.spritesheet.getSprite(7*16, 16*4, 16,16);
-		sprites[2] = Game.spritesheet.getSprite(8*16, 16*4, 16,16);
-		sprites[3] = Game.spritesheet.getSprite(9*16, 16*4, 16,16);
-		sprites[4] = Game.spritesheet.getSprite(6*16, 16*5, 16,16);
-		sprites[5] = Game.spritesheet.getSprite(7*16, 16*5, 16,16);
-		sprites[6] = Game.spritesheet.getSprite(8*16, 16*5, 16,16);
-		sprites[7] = Game.spritesheet.getSprite(9*16, 16*5, 16,16);
+		sprites[0] = Game.spritesheet.getSprite(6*Game.stdBits, Game.stdBits*4, Game.stdBits,Game.stdBits);
+		sprites[1] = Game.spritesheet.getSprite(7*Game.stdBits, Game.stdBits*4, Game.stdBits,Game.stdBits);
+		sprites[2] = Game.spritesheet.getSprite(8*Game.stdBits, Game.stdBits*4, Game.stdBits,Game.stdBits);
+		sprites[3] = Game.spritesheet.getSprite(9*Game.stdBits, Game.stdBits*4, Game.stdBits,Game.stdBits);
+		sprites[4] = Game.spritesheet.getSprite(6*Game.stdBits, Game.stdBits*5, Game.stdBits,Game.stdBits);
+		sprites[5] = Game.spritesheet.getSprite(7*Game.stdBits, Game.stdBits*5, Game.stdBits,Game.stdBits);
+		sprites[6] = Game.spritesheet.getSprite(8*Game.stdBits, Game.stdBits*5, Game.stdBits,Game.stdBits);
+		sprites[7] = Game.spritesheet.getSprite(9*Game.stdBits, Game.stdBits*5, Game.stdBits,Game.stdBits);
 	}
 	
 	public void tick() {
@@ -77,7 +77,7 @@ public class Enemy extends Entity {
 
 	public boolean isColliddingPlayer() {
 		Rectangle enemyCurrent = new Rectangle(this.getX() +maskX, this.getY()+maskY, maskW, maskH);
-		Rectangle player = new Rectangle(Game.player.getX(), Game.player.getY(),16,16);
+		Rectangle player = new Rectangle(Game.player.getX(), Game.player.getY(),Game.stdBits,Game.stdBits);
 		return enemyCurrent.intersects(player);
 	}
 	public boolean isCollidding(int xNext, int yNext) {

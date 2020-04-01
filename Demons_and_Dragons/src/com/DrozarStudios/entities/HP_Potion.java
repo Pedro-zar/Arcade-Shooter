@@ -21,7 +21,7 @@ public class HP_Potion extends Entity{
 			if(this.index > this.maxIndex) {
 				this.index = 0;
 			}
-			Entity.HP_POTION_EN = Game.spritesheet.getSprite((6+index)*16, 0, 16, 16);
+			Entity.HP_POTION_EN = Game.spritesheet.getSprite((6+index)*Game.stdBits, 0, Game.stdBits, Game.stdBits);
 		}
 	}
 	

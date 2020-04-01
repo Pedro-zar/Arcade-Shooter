@@ -22,18 +22,18 @@ public class UI {
 		g.fillRect(1, 8, (int)((Game.player.mana/Game.player.maxMana)*68), 6);
 		/* Forma 1*/
 		if(Game.player.pickGun) {
-			g.drawImage(Entity.GUN_RIGHT, -3, 10, 16, 16, null);
+			g.drawImage(Entity.GUN_RIGHT, -3, 10, Game.stdBits, Game.stdBits, null);
 			for(int i = 0; i<Game.player.maxAmmo; i++) {
-				g.drawImage(Entity.ammoSpaceUI, 14 + (i * 7), 16, 16, 16,null);	
+				g.drawImage(Entity.ammoSpaceUI, 14 + (i * 7), Game.stdBits, Game.stdBits, Game.stdBits,null);	
 			}
 			for(int i = (int) Game.player.ammo - 1; i>=0; i--) {
-				g.drawImage(Entity.ammoUI, 14 + (i * 7), 16, 16, 16,null);	
+				g.drawImage(Entity.ammoUI, 14 + (i * 7), Game.stdBits, Game.stdBits, Game.stdBits,null);	
 			}
 		}
 		/*******/
 		/*forma 3
 		if(Game.player.pickGun) 
-			g.drawImage(Entity.GUN_RIGHT, -3, 10, 16, 16, null);
+			g.drawImage(Entity.GUN_RIGHT, -3, 10, Game.stdBits, Game.stdBits, null);
 		*/
 	}
 	

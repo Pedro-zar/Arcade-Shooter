@@ -17,7 +17,7 @@ public class Player extends Entity{
 	private BufferedImage[] downPlayer,upPlayer,rightPlayer, leftPlayer;
 	private int frames = 0, maxFrames = 8, index = 0, maxIndex = 3, dirFrames = 0;
 	private boolean moved = false;
-	private BufferedImage damaged = Game.spritesheet.getSprite(144, 144, 16, 16);
+	private BufferedImage damaged = Game.spritesheet.getSprite(144, 144, Game.stdBits, Game.stdBits);
 	//damage
 	private boolean isDamaged = false, continueIsDamage = false;
 	private int  damagedF = 0, maxDamagedF = 6;
@@ -36,10 +36,10 @@ public class Player extends Entity{
 		leftPlayer = new BufferedImage[maxIndex+1];
 		rightPlayer = new BufferedImage[maxIndex+1];
 		for(int i = 0; i < maxIndex+1; i++) {
-			downPlayer[i] = Game.spritesheet.getSprite(32+(i*16), 0, width, height);
-			upPlayer[i] = Game.spritesheet.getSprite(32+(i*16), 16, width, height);
-			rightPlayer[i] = Game.spritesheet.getSprite(32+(i*16), 32, width, height);
-			leftPlayer[i] = Game.spritesheet.getSprite(32+(i*16), 48, width, height);		
+			downPlayer[i] = Game.spritesheet.getSprite(32+(i*Game.stdBits), 0, width, height);
+			upPlayer[i] = Game.spritesheet.getSprite(32+(i*Game.stdBits), Game.stdBits, width, height);
+			rightPlayer[i] = Game.spritesheet.getSprite(32+(i*Game.stdBits), 32, width, height);
+			leftPlayer[i] = Game.spritesheet.getSprite(32+(i*Game.stdBits), 48, width, height);		
 		}
 	}
 	
@@ -83,8 +83,8 @@ public class Player extends Entity{
 		}
 		checkItemCollision();
 		
-		Camera.x = Camera.clamp(this.getX() - (Game.WIDTH/2),	0, World.WIDTH*16 - Game.WIDTH);
-		Camera.y = Camera.clamp(this.getY() - (Game.HEIGHT/2),	0, World.HEIGHT*16- Game.HEIGHT);
+		Camera.x = Camera.clamp(this.getX() - (Game.WIDTH/2),	0, World.WIDTH*Game.stdBits - Game.WIDTH);
+		Camera.y = Camera.clamp(this.getY() - (Game.HEIGHT/2),	0, World.HEIGHT*Game.stdBits- Game.HEIGHT);
 	}
 	
 	

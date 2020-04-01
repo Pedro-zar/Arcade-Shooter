@@ -25,7 +25,7 @@ public class Ammo extends Entity{
 			if(this.index > this.maxIndex) {
 				this.index = 0;
 			}
-			Entity.BULLET_EN = Game.spritesheet.getSprite((6+this.index)*16, 16, 16, 16);
+			Entity.BULLET_EN = Game.spritesheet.getSprite((6+this.index)*Game.stdBits, Game.stdBits, Game.stdBits, Game.stdBits);
 		}
 	}
 	

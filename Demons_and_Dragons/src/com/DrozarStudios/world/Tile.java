@@ -7,12 +7,12 @@ import com.DrozarStudios.main.Game;
 
 public class Tile {
 
-	public static BufferedImage TILE_FLOOR = Game.spritesheet.getSprite(0, 0, 16, 16);
-	public static BufferedImage TILE_WALL = Game.spritesheet.getSprite(16, 0, 16, 16);
+	public static BufferedImage TILE_FLOOR = Game.spritesheet.getSprite(0, 0, Game.stdBits, Game.stdBits);
+	public static BufferedImage TILE_WALL = Game.spritesheet.getSprite(16, 0, Game.stdBits, Game.stdBits);
 	
 	private BufferedImage sprite;
 	private int x,y;
-	private final int maskW = 16, maskH = 16, maskX = 0, maskY = 0;
+	private final int maskW = Game.stdBits, maskH = Game.stdBits, maskX = 0, maskY = 0;
 	
 	public void render(Graphics g) {
 		g.drawImage(sprite, x - Camera.x, y - Camera.y, null);

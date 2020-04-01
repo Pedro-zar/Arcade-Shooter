@@ -13,7 +13,7 @@ public class World {
 	
 	public static Tile[] tiles;
 	public static int WIDTH, HEIGHT;
-	public static final int TILE_SIZE = 16;
+	public static final int TILE_SIZE = Game.stdBits;
 	
 	public World(String path) {
 		try {
@@ -28,46 +28,46 @@ public class World {
 					int pixelAtual= pixels[xx + (yy * map.getWidth())];
 					//Tiles
 					//chão/preto
-					tiles[xx+(yy*WIDTH)] = new FloorTile(xx*16,yy*16,Tile.TILE_FLOOR); 
+					tiles[xx+(yy*WIDTH)] = new FloorTile(xx*Game.stdBits,yy*Game.stdBits,Tile.TILE_FLOOR); 
 					if(pixelAtual == 0xFFFFFFFF) {
 						//branco/parede
-						tiles[xx+(yy*WIDTH)] = new WallTile(xx*16,yy*16,Tile.TILE_WALL);
+						tiles[xx+(yy*WIDTH)] = new WallTile(xx*Game.stdBits,yy*Game.stdBits,Tile.TILE_WALL);
 						Game.walls.add((WallTile) tiles[xx+(yy*WIDTH)]);
 					}
 					/*************/
 					//entidades
 					else if(pixelAtual == 0xFFFFFF00) {
 						//amarelo/munição
-						Ammo ammo = new Ammo(xx*16,yy*16,16,16,Entity.BULLET_EN);
+						Ammo ammo = new Ammo(xx*Game.stdBits,yy*Game.stdBits,Game.stdBits,Game.stdBits,Entity.BULLET_EN);
 						ammo.setMask(4, 6, 6, 10);
 						Game.entities.add(ammo);
 					}else if (pixelAtual == 0xFF00FF00) {
 						//verde/vida
-						HP_Potion hpPotion = new HP_Potion(xx*16,yy*16,16,16,Entity.HP_POTION_EN);
+						HP_Potion hpPotion = new HP_Potion(xx*Game.stdBits,yy*Game.stdBits,Game.stdBits,Game.stdBits,Entity.HP_POTION_EN);
 						hpPotion.setMask(3, 5, 8, 10);
 						Game.entities.add(hpPotion);
 					}else if (pixelAtual == 0xFF00FFFF) {
 						//ciano/mana
-						MP_Potion mpPotion = new MP_Potion(xx*16,yy*16,16,16,Entity.MP_POTION_EN);
+						MP_Potion mpPotion = new MP_Potion(xx*Game.stdBits,yy*Game.stdBits,Game.stdBits,Game.stdBits,Entity.MP_POTION_EN);
 						mpPotion.setMask(3, 5, 8, 10);
 						Game.entities.add(mpPotion);
 					}else if (pixelAtual == 0xFFF0F0F0) {
 						//cinza/arma
-						Gun gun = new Gun(xx*16,yy*16,16,16,Entity.GUN_EN);
+						Gun gun = new Gun(xx*Game.stdBits,yy*Game.stdBits,Game.stdBits,Game.stdBits,Entity.GUN_EN);
 						gun.setMask(4,6,9,9);
 						Game.entities.add(gun);
 					}else if (pixelAtual == 0xFFFF0000) {
 						//vermelho/inimigo
-						Enemy en = new Enemy(xx*16,yy*16,16,16,Entity.LITTLE_DEMON_EN);
+						Enemy en = new Enemy(xx*Game.stdBits,yy*Game.stdBits,Game.stdBits,Game.stdBits,Entity.LITTLE_DEMON_EN);
 						Game.entities.add(en);
 						Game.enemies.add(en);
 					}else if (pixelAtual == 0xFFFF00FF) {
 						//amuleto de fogo
-						Amulet amulet = new Amulet(xx*16, yy*16, 16, 16, Entity.AMMULET_EN);
+						Amulet amulet = new Amulet(xx*Game.stdBits, yy*Game.stdBits, Game.stdBits, Game.stdBits, Entity.AMMULET_EN);
 						Game.entities.add(amulet);
 					}else if (pixelAtual == 0xFF80FFFF) {
 						//ciano/inimigoBuffado
-						Enemy en = new Enemy(xx*16,yy*16,16,16,Entity.LITTLE_DEMON_EN);
+						Enemy en = new Enemy(xx*Game.stdBits,yy*Game.stdBits,Game.stdBits,Game.stdBits,Entity.LITTLE_DEMON_EN);
 						Game.entities.add(en);
 						Game.enemies.add(en);
 						en.maxLife*=2;
@@ -77,8 +77,8 @@ public class World {
 					// player
 					else if (pixelAtual == 0xFF0000FF) {
 						//azul/player
-						Game.player.setX(xx*16);
-						Game.player.setY(yy*16);
+						Game.player.setX(xx*Game.stdBits);
+						Game.player.setY(yy*Game.stdBits);
 					}
 					/****/
 				}

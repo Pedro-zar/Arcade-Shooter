@@ -11,18 +11,18 @@ public class Entity{
 
 	protected double x, y; 
 	private int maskX, maskY,maskW, maskH;
-	public static BufferedImage GUN_LEFT = Game.spritesheet.getSprite(9*16, 32, 16, 16);
-	public static BufferedImage GUN_RIGHT = Game.spritesheet.getSprite(8*16, 32, 16, 16);
-	public static BufferedImage GUN_UP = Game.spritesheet.getSprite(6*16, 48, 16, 16);
-	public static BufferedImage GUN_DOWN = Game.spritesheet.getSprite(7*16, 48, 16, 16);
-	public static BufferedImage AMMULET_EN = Game.spritesheet.getSprite(8*16, 48, 16, 16);
-	public static BufferedImage ammoUI = Game.spritesheet.getSprite(8*16, 16, 16, 16);
-	public static BufferedImage ammoSpaceUI = Game.spritesheet.getSprite(9*16, 16, 16, 16);
-	public static BufferedImage HP_POTION_EN = Game.spritesheet.getSprite(6*16, 0, 16, 16);
-	public static BufferedImage MP_POTION_EN = Game.spritesheet.getSprite(8*16, 0, 16, 16);
-	public static BufferedImage GUN_EN = Game.spritesheet.getSprite(6*16, 32, 16, 16);
-	public static BufferedImage BULLET_EN = Game.spritesheet.getSprite(6*16, 16, 16, 16);
-	public static BufferedImage LITTLE_DEMON_EN = Game.spritesheet.getSprite(6*16, 16*4, 16, 16);
+	public static BufferedImage GUN_LEFT = Game.spritesheet.getSprite(9*Game.stdBits, 32, Game.stdBits, Game.stdBits);
+	public static BufferedImage GUN_RIGHT = Game.spritesheet.getSprite(8*Game.stdBits, 32, Game.stdBits, Game.stdBits);
+	public static BufferedImage GUN_UP = Game.spritesheet.getSprite(6*Game.stdBits, 48, Game.stdBits, Game.stdBits);
+	public static BufferedImage GUN_DOWN = Game.spritesheet.getSprite(7*Game.stdBits, 48, Game.stdBits, Game.stdBits);
+	public static BufferedImage AMMULET_EN = Game.spritesheet.getSprite(8*Game.stdBits, 48, Game.stdBits, Game.stdBits);
+	public static BufferedImage ammoUI = Game.spritesheet.getSprite(8*Game.stdBits, Game.stdBits, Game.stdBits, Game.stdBits);
+	public static BufferedImage ammoSpaceUI = Game.spritesheet.getSprite(9*Game.stdBits, Game.stdBits, Game.stdBits, Game.stdBits);
+	public static BufferedImage HP_POTION_EN = Game.spritesheet.getSprite(6*Game.stdBits, 0, Game.stdBits, Game.stdBits);
+	public static BufferedImage MP_POTION_EN = Game.spritesheet.getSprite(8*Game.stdBits, 0, Game.stdBits, Game.stdBits);
+	public static BufferedImage GUN_EN = Game.spritesheet.getSprite(6*Game.stdBits, 32, Game.stdBits, Game.stdBits);
+	public static BufferedImage BULLET_EN = Game.spritesheet.getSprite(6*Game.stdBits, Game.stdBits, Game.stdBits, Game.stdBits);
+	public static BufferedImage LITTLE_DEMON_EN = Game.spritesheet.getSprite(6*Game.stdBits, Game.stdBits*4, Game.stdBits, Game.stdBits);
 	protected int width, height;
 	public BufferedImage sprite;
 	

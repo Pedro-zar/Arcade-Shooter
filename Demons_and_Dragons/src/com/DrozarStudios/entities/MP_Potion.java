@@ -22,7 +22,7 @@ public class MP_Potion extends Entity{
 			if(this.index > this.maxIndex) {
 				this.index = 0;
 			}
-			Entity.MP_POTION_EN = Game.spritesheet.getSprite((8+index)*16, 0, 16, 16);
+			Entity.MP_POTION_EN = Game.spritesheet.getSprite((8+index)*Game.stdBits, 0, Game.stdBits, Game.stdBits);
 		}
 	}
 	

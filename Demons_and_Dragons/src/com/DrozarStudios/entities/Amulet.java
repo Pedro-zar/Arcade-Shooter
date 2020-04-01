@@ -24,7 +24,7 @@ public class Amulet extends Entity{
 			if(index>maxIndex) 
 				index=0;
 		}
-		Entity.AMMULET_EN = Game.spritesheet.getSprite((8+index)*16, 48, 16, 16);
+		Entity.AMMULET_EN = Game.spritesheet.getSprite((8+index)*Game.stdBits, 48, Game.stdBits, Game.stdBits);
 	}
 	
 	public void render(Graphics g) {

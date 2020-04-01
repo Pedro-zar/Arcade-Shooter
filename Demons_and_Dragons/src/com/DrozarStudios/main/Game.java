@@ -33,7 +33,7 @@ import com.DrozarStudios.world.World;
 public class Game extends Canvas implements Runnable, KeyListener, MouseListener{
 	
 	private static final long serialVersionUID = 1L;
-	public static final int WIDTH= 240, SCALE = 3, HEIGHT = 160;
+	public static final int WIDTH= 240, SCALE = 3, HEIGHT = 160, stdBits = 16;
 	private boolean running = true;
 	public static JFrame frame;
 	public static BufferedImage image;
@@ -191,7 +191,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		Game.bullets = new ArrayList<Bullet>();
 		Game.walls = new ArrayList<WallTile>();
 		Game.spritesheet = new Spritesheet("/spritesheet.png");
-		Game.player = new Player(0,0,16,16,Game.spritesheet.getSprite(32, 0, 16, 16));
+		Game.player = new Player(0,0,stdBits,stdBits,Game.spritesheet.getSprite(32, 0, stdBits, stdBits));
 		Game.entities.add(Game.player);
 		Game.world = new World("/map_1.png");
 	}
@@ -203,7 +203,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		Game.bullets = new ArrayList<Bullet>();
 		Game.walls = new ArrayList<WallTile>();
 		Game.spritesheet = new Spritesheet("/spritesheet.png");
-		Game.player = new Player(0,0,16,16,Game.spritesheet.getSprite(32, 0, 16, 16));
+		Game.player = new Player(0,0,stdBits,stdBits,Game.spritesheet.getSprite(32, 0, stdBits, stdBits));
 		Game.entities.add(Game.player);
 		Game.world = new World("/map_"+level+".png");
 	}

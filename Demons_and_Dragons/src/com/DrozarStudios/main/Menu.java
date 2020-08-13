@@ -64,6 +64,8 @@ public class Menu {
 		this.enter = enter;
 	}
 
+	
+	
 	public void render(Graphics g) {
 		//title
 		Graphics2D g2 = (Graphics2D) g;

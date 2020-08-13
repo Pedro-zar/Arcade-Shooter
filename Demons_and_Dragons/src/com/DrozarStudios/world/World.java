@@ -90,13 +90,15 @@ public class World {
 	}
 	
 	public static boolean isFree(int xNext, int yNext) {
-		
 		int x1 = xNext / TILE_SIZE;
 		int y1 = yNext / TILE_SIZE;
+		
 		int x2 = (xNext+TILE_SIZE-1) / TILE_SIZE;
 		int y2 = yNext / TILE_SIZE;
+		
 		int x3 = xNext/ TILE_SIZE;
 		int y3 = (yNext+TILE_SIZE-1) / TILE_SIZE;
+		
 		int x4 = (xNext+TILE_SIZE-1) / TILE_SIZE;
 		int y4 = (yNext+TILE_SIZE-1) / TILE_SIZE;
 		
@@ -109,8 +111,8 @@ public class World {
 	
 	
 	public void render(Graphics g) {
-		int xStart = Camera.x>>4;
-		int yStart = Camera.y>>4;
+		int xStart = Camera.x/16;
+		int yStart = Camera.y/16;
 		int xFinal = xStart + (Game.WIDTH>>4);
 		int yFinal = yStart + (Game.HEIGHT>>4);
 		for(int xx = xStart; xx <= xFinal; xx++) {

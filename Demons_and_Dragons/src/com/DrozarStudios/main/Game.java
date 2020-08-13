@@ -33,9 +33,9 @@ import com.DrozarStudios.world.World;
 public class Game extends Canvas implements Runnable, KeyListener, MouseListener{
 	
 	private static final long serialVersionUID = 1L;
-	public static final int WIDTH= 240, SCALE = 3, HEIGHT = 160, stdBits = 16;
+	public static final int WIDTH= 224, SCALE = 3, HEIGHT = 160, stdBits = 16;
 	private boolean running = true;
-	public static JFrame frame;
+	private static JFrame frame;
 	public static BufferedImage image;
 	private Thread thread;
 	public static Player player;
@@ -55,6 +55,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	private boolean showMessageGameOver = true, restartGame = false;
 	private int framesGameOver = 0;
 	public Menu menu;
+	
 	public static void main(String[] args) {
 		
 		Game game = new Game();
@@ -170,7 +171,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 	
 	public Game() {
-		Sound.musicBackground.loop();
+		//Sound.musicBackground.loop();
 		rand = new Random();
 		addKeyListener(this);
 		addMouseListener(this);

@@ -5,12 +5,17 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import com.DrozarStudios.main.Game;
+import com.DrozarStudios.world.Camera;
 import com.DrozarStudios.world.Tile;
 
 public class Entity{
 
 	protected double x, y; 
 	private int maskX, maskY,maskW, maskH;
+	protected int width, height;
+	public BufferedImage sprite;
+	
+	//sprites
 	public static BufferedImage GUN_LEFT = Game.spritesheet.getSprite(9*Game.stdBits, 32, Game.stdBits, Game.stdBits);
 	public static BufferedImage GUN_RIGHT = Game.spritesheet.getSprite(8*Game.stdBits, 32, Game.stdBits, Game.stdBits);
 	public static BufferedImage GUN_UP = Game.spritesheet.getSprite(6*Game.stdBits, 48, Game.stdBits, Game.stdBits);
@@ -23,8 +28,7 @@ public class Entity{
 	public static BufferedImage GUN_EN = Game.spritesheet.getSprite(6*Game.stdBits, 32, Game.stdBits, Game.stdBits);
 	public static BufferedImage BULLET_EN = Game.spritesheet.getSprite(6*Game.stdBits, Game.stdBits, Game.stdBits, Game.stdBits);
 	public static BufferedImage LITTLE_DEMON_EN = Game.spritesheet.getSprite(6*Game.stdBits, Game.stdBits*4, Game.stdBits, Game.stdBits);
-	protected int width, height;
-	public BufferedImage sprite;
+	
 	
 	public Entity(int x, int y, int width, int height, BufferedImage sprite) {
 		this.x = x;
@@ -106,8 +110,11 @@ public class Entity{
 		return e1Mask.intersects(e2Mask);
 	}
 	
-	public void tick() {}
+	public void tick() {
+		
+	}
 	public void render(Graphics g) {
+		g.drawImage(sprite, this.getX() - Camera.x, this.getY()-Camera.y, null);
 		/*	
 		  	g.setColor(Color.black);
 			g.fillRect(this.getX() + maskX - Camera.x,this.getY() + maskY- Camera.y, maskW, maskH);

@@ -15,9 +15,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import javax.swing.JFrame;
-
 import com.DrozarStudios.entities.Ammo;
 import com.DrozarStudios.entities.Amulet;
 import com.DrozarStudios.entities.Bullet;

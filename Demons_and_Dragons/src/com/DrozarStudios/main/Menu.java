@@ -60,6 +60,7 @@ public class Menu {
 	private boolean getEnter() {
 		return this.enter;
 	}
+	
 	public void setEnter(boolean enter) {
 		this.enter = enter;
 	}

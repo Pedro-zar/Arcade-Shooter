@@ -1,4 +1,4 @@
-package com.DrozarStudios.world;
+package com.Pedrozar.world;
 
 import java.awt.image.BufferedImage;
 

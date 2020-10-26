@@ -1,4 +1,4 @@
-package com.DrozarStudios.main;
+package com.Pedrozar.main;
 
 import java.applet.Applet;
 import java.applet.AudioClip;

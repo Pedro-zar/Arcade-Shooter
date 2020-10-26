@@ -1,12 +1,12 @@
-package com.DrozarStudios.entities;
+package com.Pedrozar.entities;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import com.DrozarStudios.main.Game;
-import com.DrozarStudios.main.Sound;
-import com.DrozarStudios.world.Camera;
-import com.DrozarStudios.world.World;
+import com.Pedrozar.main.Game;
+import com.Pedrozar.main.Sound;
+import com.Pedrozar.world.Camera;
+import com.Pedrozar.world.World;
 
 public class Player extends Entity{
 	

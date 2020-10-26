@@ -1,11 +1,11 @@
-package com.DrozarStudios.graphics;
+package com.Pedrozar.graphics;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-import com.DrozarStudios.entities.Entity;
-import com.DrozarStudios.main.Game;
+import com.Pedrozar.entities.Entity;
+import com.Pedrozar.main.Game;
 
 public class UI {
 		

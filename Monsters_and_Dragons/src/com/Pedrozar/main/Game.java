@@ -1,4 +1,4 @@
-package com.DrozarStudios.main;
+package com.Pedrozar.main;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -16,17 +16,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JFrame;
-import com.DrozarStudios.entities.Ammo;
-import com.DrozarStudios.entities.Amulet;
-import com.DrozarStudios.entities.Bullet;
-import com.DrozarStudios.entities.Enemy;
-import com.DrozarStudios.entities.Entity;
-import com.DrozarStudios.entities.Player;
-import com.DrozarStudios.graphics.Spritesheet;
-import com.DrozarStudios.graphics.UI;
-import com.DrozarStudios.world.Camera;
-import com.DrozarStudios.world.WallTile;
-import com.DrozarStudios.world.World;
+import com.Pedrozar.entities.Ammo;
+import com.Pedrozar.entities.Amulet;
+import com.Pedrozar.entities.Bullet;
+import com.Pedrozar.entities.Enemy;
+import com.Pedrozar.entities.Entity;
+import com.Pedrozar.entities.Player;
+import com.Pedrozar.graphics.Spritesheet;
+import com.Pedrozar.graphics.UI;
+import com.Pedrozar.world.Camera;
+import com.Pedrozar.world.WallTile;
+import com.Pedrozar.world.World;
 
 public class Game extends Canvas implements Runnable, KeyListener, MouseListener{
 	

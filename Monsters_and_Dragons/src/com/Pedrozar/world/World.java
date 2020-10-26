@@ -1,4 +1,4 @@
-package com.DrozarStudios.world;
+package com.Pedrozar.world;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -6,8 +6,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import com.DrozarStudios.entities.*;
-import com.DrozarStudios.main.Game;
+import com.Pedrozar.entities.*;
+import com.Pedrozar.main.Game;
 
 public class World {
 	

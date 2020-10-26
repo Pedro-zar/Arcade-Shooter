@@ -1,11 +1,11 @@
-package com.DrozarStudios.entities;
+package com.Pedrozar.entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import com.DrozarStudios.main.Game;
-import com.DrozarStudios.world.Camera;
+import com.Pedrozar.main.Game;
+import com.Pedrozar.world.Camera;
 
 public class Bullet extends Entity{
 

@@ -224,7 +224,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	
 	public void frameStart() {
 		this.setPreferredSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
-		frame = new JFrame("Demons and Pistols");
+		frame = new JFrame("Monsters and Pistols");
 		frame.add(this);
 		frame.setResizable(false);
 		frame.pack();
